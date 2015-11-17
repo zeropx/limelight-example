@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Fun data stuff</title>
-	<link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="stylesheets/screen.css">
 </head>
 <body>
 <table>
@@ -25,12 +25,29 @@
 			<tr>
 				<td><?php print $employee['name'] ?></td>
 				<td><?php print $employee['age'] ?></td>
+				<td><?php 
+					print $employee['coverage'];
+					if (isset($employee['dependents']) && count($employee['dependents'])) {
+						print ":" . count($employee['dependents']);
+					}
+					?></td>
+				
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
 			</tr>
 			<?php if (isset($employee['dependents']) && count($employee['dependents'])): ?>
 				<?php foreach ($employee['dependents'] as $k => $dependent): ?>
-				<tr>
-					<td><?php print $dependent['name'] ?> ?></td>
+				<tr class="dependent">
+					<td><?php print $dependent['name'] ?></td>
 					<td><?php print $dependent['age'] ?></td>
+					<td><?php print $employee['coverage'] ?></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
 				</tr>	
 				<?php endforeach ?>
 			<?php endif ?>
